@@ -1,0 +1,14 @@
+#!/bin/ash
+
+# enable eula
+if [ -n "$EULA" ]; then
+  echo "eula=$EULA" > eula.txt
+fi
+
+# pry mode
+if [[ "$PRY" == 'true' ]];then
+  /bin/ash
+# normal mode
+else
+  java $JVM_ARGS -jar FTBserver-*.jar nogui
+fi
