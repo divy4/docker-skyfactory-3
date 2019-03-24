@@ -1,0 +1,13 @@
+#!/bin/ash
+
+set -e
+repo="$1"
+project="$2"
+file_id="$3"
+output_dir="${4:-$(pwd)}"
+
+# download package
+wget "https://$repo/projects/$project/files/$file_id/download" --output-document=/tmp/download.zip
+unzip /tmp/download.zip -d "$output_dir" -o
+rm /tmp/download.zip "$output_dir"/*.bat
+chmod a+x "$output_dir"/*.sh
