@@ -6,8 +6,9 @@
 
 FROM openjdk:8u191-jre-alpine3.9
 
-ENV BIN_DIR="/usr/local/bin" \
-    WORK_DIR="/data"
+ENV BIN_DIR="/usr/local/bin/" \
+    DATA_DIR="/data/" \ 
+    WORK_DIR="/minecraft/"
 
 ENV GROUP="minecraft" \
     GROUP_ID=1234 \
@@ -42,7 +43,7 @@ USER ${USER}
 ADD runtime_tools/* ${BIN_DIR}
 
 # Data that should be saved
-VOLUME ${WORK_DIR}
+VOLUME ${DATA_DIR}
 
 # Entrypoint
 WORKDIR ${WORK_DIR}
